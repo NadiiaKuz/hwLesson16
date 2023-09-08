@@ -34,10 +34,8 @@ namespace hwLesson16
                     return 0;
                 }
             }
-            else
-            {
-                throw new ArgumentException();
-            }
+            
+            throw new ArgumentException();
         }
 
         public static bool operator ==(Candidate candidate1, Candidate candidate2)
@@ -62,7 +60,7 @@ namespace hwLesson16
 
         public override int GetHashCode()
         {
-            return (Name + YearOfBirth + Experience).GetHashCode();
+            return ((int)Experience).GetHashCode();
         }
     }
 }

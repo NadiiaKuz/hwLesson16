@@ -11,8 +11,8 @@
                 new Candidate("Mark", 1997, 0.3),
                 new Candidate("Sarah", 1999, 5.6),
                 new Candidate("Sonya", 2000, 7),
-                new Candidate("John", 1977, 15),
-                new Candidate("Mona", 1967, 25), // Must get job
+                new Candidate("John", 1977, 15.2),
+                new Candidate("Mona", 1967, 15), // Must get job
                 new Candidate("Connor", 1999, 5)
             };
 
@@ -35,14 +35,12 @@
                         }
 
                         var bestCandidateOld = bestCandidate;
-                        var candidateHash = candidate.GetHashCode();
 
                         bestCandidate = EmployeeDepartment.FilterCandidate(bestCandidate, candidate);
-                        var bestCandidateHash = bestCandidate.GetHashCode();
 
                         var declinedCandidate = candidate;
 
-                        if (bestCandidateHash == candidateHash)
+                        if (bestCandidate.Name.Equals(candidate.Name) && (int)bestCandidate.Experience == (int)candidate.Experience)
                             declinedCandidate = bestCandidateOld;
 
                         MailSender.SendMessageDecline(declinedCandidate);
